@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="aeron-external-ipc-ping-demo" />
+        <module name="aeron-multicast-ping-demo" />
+        <module name="aeron-archival-pong-demo" />
+        <module name="aeron-simple-md-demo" />
+        <module name="aeron-agent-ipc-ping-pong-demo" />
+        <module name="aeron-md-ipc-ping-demo2" />
+        <module name="aeron-archival-ping-demo" />
+        <module name="aeron-multicast-pong-demo" />
+        <module name="aeron-internal-ipc-2p1c-demo" />
+        <module name="aeron-cluster-demo" />
+        <module name="aeron-external-ipc-pong-demo" />
+        <module name="aeron-cluster-consumer-client" />
+        <module name="aeron-cluster-producer-client" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="aeron-ipc" target="16" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

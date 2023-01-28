@@ -1,0 +1,6 @@
+
+S	java:S1064"9Replace this use of System.out or System.err by a logger.(·‹‘²üÿÿÿÿ
+\
+java:S1128"?Remove this unused import 'io.aeron.logbuffer.FragmentHandler'.(š€Í¦8¸«Ð‹Ø0
+R
+java:S1128"0Remove this unused import 'java.nio.ByteBuffer'.(¿¢×±úÿÿÿÿ8¸«Ð‹Ø0

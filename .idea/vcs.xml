@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/aeron-agent-ipc-ping-pong-demo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/aeron-external-ipc-ping-demo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/aeron-external-ipc-pong-demo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/aeron-internal-ipc-2p1c-demo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/aeron-simple-md-demo" vcs="Git" />
+  </component>
+</project>

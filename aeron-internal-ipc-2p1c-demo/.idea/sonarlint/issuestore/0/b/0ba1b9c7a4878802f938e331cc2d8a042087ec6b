@@ -1,0 +1,31 @@
+
+`	java:S1120"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112E"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+=
+java:S1604!"(Make this anonymous inner class a lambda(£·®
+>
+java:S16046"(Make this anonymous inner class a lambda(ÿïÞß
+C
+java:S1604M"(Make this anonymous inner class a lambda(ûè¿°þÿÿÿÿ
+=
+java:S2189Q""Add an end condition to this loop.(˜ïˆžÿÿÿÿÿ
+=
+java:S21899""Add an end condition to this loop.(˜ïˆžÿÿÿÿÿ
+=
+java:S2189$""Add an end condition to this loop.(˜ïˆžÿÿÿÿÿ
+g
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(º™Ú7
+X	java:S125"<This block of commented-out lines of code should be removed.(°ÕéÝ8âÊË®Ø0
+N	java:S106'"9Replace this use of System.out or System.err by a logger.(ŒÉš‰
+t
+java:S2142/"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+N	java:S106<"9Replace this use of System.out or System.err by a logger.(žÿÜÔ
+t
+java:S2142D"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+N	java:S106P"9Replace this use of System.out or System.err by a logger.(¦‡ˆ©
+I
+java:S1481M"'Remove this unused "t3" local variable.(ûè¿°þÿÿÿÿ8Ô³±²Ø0
+]	java:S125Y"<This block of commented-out lines of code should be removed.(ÅÑ¨éûÿÿÿÿ8Äƒ²²Ø0
+]	java:S125]"<This block of commented-out lines of code should be removed.(ÁÔÉÚþÿÿÿÿ8Äƒ²²Ø0
+Z
+java:S1128"8Remove this unused import 'io.aeron.driver.MediaDriver'.(…íäßÿÿÿÿÿ8ÍšÊ®Ø0

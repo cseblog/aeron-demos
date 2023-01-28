@@ -1,0 +1,6 @@
+
+N	java:S106""9Replace this use of System.out or System.err by a logger.(òíë
+Z
+java:S1128"8Remove this unused import 'io.aeron.driver.MediaDriver'.(…íäßÿÿÿÿÿ8¾Ö‰²Ø0
+W
+java:S1128":Remove this unused import 'io.aeron.driver.ThreadingMode'.(ßÎÌœ8¾Ö‰²Ø0

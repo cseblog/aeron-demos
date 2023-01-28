@@ -1,0 +1,11 @@
+
+a
+java:S1854"DRemove this useless assignment to local variable "idleStrategySend".(³Œüü8ú«ÞŠØ0
+X	java:S125"<This block of commented-out lines of code should be removed.(ÒÑßž8ò‘ô­Ø0
+R
+java:S1481"5Remove this unused "idleStrategySend" local variable.(³Œüü8û«ÞŠØ0
+Z	java:S106#"9Replace this use of System.out or System.err by a logger.(ÁºÀ ÿÿÿÿÿ8­®Ø0
+Z
+java:S1128"8Remove this unused import 'io.aeron.driver.MediaDriver'.(…íäßÿÿÿÿÿ8¢û«²Ø0
+W
+java:S1128":Remove this unused import 'io.aeron.driver.ThreadingMode'.(ßÎÌœ8¢û«²Ø0
