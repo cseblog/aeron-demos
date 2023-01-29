@@ -18,13 +18,18 @@
         <module>aeron-agent-ipc-ping-pong-demo</module>
         <module>aeron-external-ipc-pong-demo</module>
         <module>aeron-external-ipc-ping-demo</module>
+
         <module>aeron-internal-ipc-2p1c-demo</module>
         <module>aeron-simple-md-demo</module>
+
         <module>aeron-archival-ping-demo</module>
         <module>aeron-archival-pong-demo</module>
+
+        <module>aeron-cluster-messaging</module>
         <module>aeron-cluster-demo</module>
         <module>aeron-cluster-producer-client</module>
         <module>aeron-cluster-consumer-client</module>
+
         <module>aeron-multicast-ping-demo</module>
         <module>aeron-multicast-pong-demo</module>
     </modules>

@@ -5,3 +5,5 @@
 .settings/
 */.idea/**
 target/
+.idea/**
+*/.idea/**
