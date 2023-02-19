@@ -11,28 +11,29 @@ import org.agrona.concurrent.ShutdownSignalBarrier;
 
 public class Main {
 
-    //Start Media Driver sepperately
+    //Start Media Driver seperately
     public static void main(String[] args) {
         final String channel = "aeron:ipc";
-        final int stream = 10;
+        final int streamId = 10;
         final int sendCount = 1_000_000;
 
         final IdleStrategy idleStrategySend = new BusySpinIdleStrategy();
         final ShutdownSignalBarrier barrier = new ShutdownSignalBarrier();
         final Aeron aeron = Aeron.connect();
 
-        //construct the subs and pubs
-        final Publication publication = aeron.addPublication(channel, stream);
+        //Step 1: Construct the subs and pubs
+        final Publication publication = aeron.addPublication(channel, streamId);
 
-        //construct the agents
-        final SendAgent sendAgent = new SendAgent(publication, sendCount);
+        //Step 2: Construct the agents
+        final SendAgent sendAgent = new SendAgent(publication, barrier, sendCount);
 
-        //construct agent runners
+        //Step 3: Construct agent runners
         final AgentRunner sendAgentRunner = new AgentRunner(idleStrategySend,
                 Throwable::printStackTrace, null, sendAgent);
 
-        System.out.println("Starting SendingAgent...");
-        //start the runners
+
+        System.out.println("Starting SendingAgent....");
+        //Step 4: Start the runners
         AgentRunner.startOnThread(sendAgentRunner);
 
         //wait for the final item to be received before closing

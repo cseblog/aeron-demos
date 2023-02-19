@@ -90,7 +90,7 @@ public class Consumer implements EgressListener {
     }
 
     public static void main(final String[] args) {
-        final int customerId = Integer.parseInt(System.getProperty("aeron.cluster.tutorial.customerId"));       // <1>
+        final int customerId = Integer.parseInt(System.getProperty("aeron.cluster.tutorial.customerId"));
         final String[] hostnames = System
                 .getProperty("aeron.cluster.tutorial.hostnames", "localhost,localhost,localhost")
                 .split(",");
@@ -99,18 +99,18 @@ public class Consumer implements EgressListener {
 
         final Consumer client = new Consumer(customerId);
         try (
-                MediaDriver mediaDriver = MediaDriver.launchEmbedded(new MediaDriver.Context()                      // <1>
+                MediaDriver mediaDriver = MediaDriver.launchEmbedded(new MediaDriver.Context()
                         .threadingMode(ThreadingMode.SHARED)
                         .dirDeleteOnStart(true)
                         .dirDeleteOnShutdown(true));
                 AeronCluster aeronCluster = AeronCluster.connect(
                         new AeronCluster.Context()
                                 .egressListener(client)
-                .egressChannel("aeron:udp?endpoint=localhost:0")
-//                                .egressChannel("aeron:udp?endpoint=239.255.255.1:4300|interface=192.168.10.137|ttl=16")// <3>
+//                .egressChannel("aeron:udp?endpoint=localhost:0")
+                                .egressChannel("aeron:udp?endpoint=239.255.255.1:4300|interface=192.168.64.5|ttl=16")
                                 .aeronDirectoryName(mediaDriver.aeronDirectoryName())
-                                .ingressChannel("aeron:udp")                                                                    // <4>
-                                .ingressEndpoints(ingressEndpoints)))                                                           // <5>
+                                .ingressChannel("aeron:udp")
+                                .ingressEndpoints(ingressEndpoints)))
         {
             client.bidInAuction(aeronCluster);
         }

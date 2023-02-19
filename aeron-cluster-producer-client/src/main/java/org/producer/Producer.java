@@ -103,9 +103,7 @@ public class Producer implements EgressListener {
         final StringBuilder sb = new StringBuilder();
         for (int i = 0; i < hostnames.size(); i++) {
             sb.append(i).append('=');
-            sb.append(hostnames.get(i))
-                    .append(':')
-                    .append(calculatePort(i, CLIENT_FACING_PORT_OFFSET));
+            sb.append(hostnames.get(i)).append(':').append(calculatePort(i, CLIENT_FACING_PORT_OFFSET));
             sb.append(',');
         }
 
@@ -120,7 +118,7 @@ public class Producer implements EgressListener {
     public static void main(final String[] args) {
         final int customerId = Integer.parseInt(System.getProperty("aeron.cluster.tutorial.customerId"));       // <1>
         final String[] hostnames = System.getProperty(
-                "aeron.cluster.tutorial.hostnames", "localhost,localhost,localhost").split(",");
+                "aeron.cluster.tutorial.hostnames", "192.168.64.6,192.168.64.5").split(",");
         final String ingressEndpoints = ingressEndpoints(Arrays.asList(hostnames));
         System.out.println("ingressEndpoints..." + ingressEndpoints);
 
@@ -136,8 +134,8 @@ public class Producer implements EgressListener {
                 AeronCluster aeronCluster = AeronCluster.connect(
                         new AeronCluster.Context()
                                 .egressListener(client)
-                                .egressChannel("aeron:udp?endpoint=localhost:0")
-//                                .egressChannel("aeron:udp?endpoint=239.255.255.1:4300|interface=192.168.64.4|ttl=16")// <3>
+//                                .egressChannel("aeron:udp?endpoint=localhost:0")
+                                .egressChannel("aeron:udp?endpoint=239.255.255.1:4300|interface=192.168.64.6|ttl=16")// <3>
                                 .aeronDirectoryName(mediaDriver.aeronDirectoryName())
                                 .ingressChannel("aeron:udp")                                                                    // <4>
                                 .ingressEndpoints(ingressEndpoints)))                                                           // <5>

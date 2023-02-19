@@ -71,15 +71,20 @@ public class Node {
                     .append(calculatePort(i, ARCHIVE_CONTROL_PORT_OFFSET));
             sb.append('|');
         }
-
+        String members = sb.toString();
+        System.out.println("Members: " + members);
         return sb.toString();
     }
 
     @SuppressWarnings("try")
     public static void main(final String[] args) {
         final int nodeId = parseInt(System.getProperty("aeron.cluster.tutorial.nodeId"));
-        final String[] hostnames = System.getProperty(
-                "aeron.cluster.tutorial.hostnames", "localhost,localhost,localhost").split(",");            // <2>
+//        final String ethInterface = System.getProperty("aeron.cluster.interface");
+//        final String multicastAddress = System.getProperty("aeron.cluster.multicast.address");
+
+        final String[] hostnames = System.getProperty("aeron.cluster.tutorial.hostnames",
+                "192.168.64.6,192.168.64.5").split(",");
+
         final String hostname = hostnames[nodeId];
         final File baseDir = new File(System.getProperty("user.dir"), "node" + nodeId);
         final String aeronDirName = CommonContext.getAeronDirectoryName() + "-" + nodeId + "-driver";
@@ -117,7 +122,6 @@ public class Node {
                 .clusterMemberId(nodeId)
                 .clusterMembers(clusterMembers(Arrays.asList(hostnames)))
                 .clusterDir(new File(baseDir, "cluster"))
-//                .egressChannel("aeron:udp?endpoint=localhost:0")
                 .ingressChannel("aeron:udp?term-length=64k")
                 .logChannel(logControlChannel(nodeId, hostname, LOG_CONTROL_PORT_OFFSET))
                 .replicationChannel(logReplicationChannel(hostname))
@@ -134,8 +138,9 @@ public class Node {
         try (
                 ClusteredMediaDriver clusteredMediaDriver = ClusteredMediaDriver.launch(
                         mediaDriverContext, archiveContext, consensusModuleContext);
-                ClusteredServiceContainer container = ClusteredServiceContainer.launch(
-                        clusteredServiceContext)) {
+                ClusteredServiceContainer container =
+                        ClusteredServiceContainer.launch(clusteredServiceContext)) {
+
             System.out.println("[" + nodeId + "] Started Cluster Node on " + hostname + "...");
             barrier.await();
             System.out.println("[" + nodeId + "] Exiting");
