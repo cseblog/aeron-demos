@@ -10,7 +10,16 @@
         <option value="$PROJECT_DIR$/aeron-ipc-demo5/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/aeron-external-ipc-pong-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/ipc/aeron-external-ipc-ping-demo/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/aeron-ipc-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/aeron-ipc/pom.xml" />
+        <option value="$PROJECT_DIR$/aeron-unicast-ping-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/dfads/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_16" default="true" project-jdk-name="openjdk-16" project-jdk-type="JavaSDK" />

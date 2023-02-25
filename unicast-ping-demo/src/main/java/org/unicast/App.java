@@ -7,7 +7,7 @@ import org.agrona.concurrent.BusySpinIdleStrategy;
 import org.agrona.concurrent.IdleStrategy;
 import org.agrona.concurrent.ShutdownSignalBarrier;
 
-public class Main {
+public class App {
     public static final String n1 = "192.168.64.6";
     public static final String n2 = "192.168.64.5";
     public static final String n3 = "192.168.64.4";

@@ -1,4 +1,4 @@
-package org.example;
+package org.unicast;
 
 
 import io.aeron.Subscription;

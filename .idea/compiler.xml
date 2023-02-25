@@ -11,6 +11,7 @@
         <module name="aeron-archival-pong-demo" />
         <module name="aeron-simple-md-demo" />
         <module name="aeron-agent-ipc-ping-pong-demo" />
+        <module name="unicast-pong-demo" />
         <module name="aeron-cluster-messaging" />
         <module name="aeron-md-ipc-ping-demo2" />
         <module name="aeron-archival-ping-demo" />
@@ -18,12 +19,14 @@
         <module name="aeron-internal-ipc-2p1c-demo" />
         <module name="aeron-cluster-demo" />
         <module name="aeron-external-ipc-pong-demo" />
+        <module name="unicast-ping-demo" />
         <module name="aeron-cluster-consumer-client" />
         <module name="aeron-cluster-producer-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="aeron-ipc" target="16" />
+      <module name="dfads" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
