@@ -39,7 +39,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.example.Main</mainClass>
+                            <mainClass>org.example.MediaDriver</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

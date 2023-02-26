@@ -27,7 +27,7 @@ public class App {
         final Publication publication = aeron.addPublication(channel, streamId);
 
         //construct the agents
-        final SendAgent sendAgent = new SendAgent(publication, sendCount);
+        final SendAgent sendAgent = new SendAgent(publication, sendCount, barrier);
 
         //construct agent runners
         final AgentRunner sendAgentRunner = new AgentRunner(idleStrategySend,

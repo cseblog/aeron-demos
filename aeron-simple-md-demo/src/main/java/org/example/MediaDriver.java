@@ -1,16 +1,15 @@
 package org.example;
 
-import io.aeron.driver.MediaDriver;
 import io.aeron.driver.ThreadingMode;
 import org.agrona.concurrent.BusySpinIdleStrategy;
 import org.agrona.concurrent.NoOpIdleStrategy;
 import org.agrona.concurrent.ShutdownSignalBarrier;
 
-public class Main {
+public class MediaDriver {
 
     //Start Media Driver sepperately
     public static void main(String[] args) {
-        final MediaDriver.Context ctx = new MediaDriver.Context()
+        final io.aeron.driver.MediaDriver.Context ctx = new io.aeron.driver.MediaDriver.Context()
                 .termBufferSparseFile(false)
                 .useWindowsHighResTimer(true)
                 .threadingMode(ThreadingMode.DEDICATED)
@@ -18,7 +17,7 @@ public class Main {
                 .receiverIdleStrategy(NoOpIdleStrategy.INSTANCE)
                 .senderIdleStrategy(NoOpIdleStrategy.INSTANCE);
 
-        try (MediaDriver ignored = MediaDriver.launch(ctx)) {
+        try (io.aeron.driver.MediaDriver ignored = io.aeron.driver.MediaDriver.launch(ctx)) {
             new ShutdownSignalBarrier().await();
             System.out.println("Shutdown Driver...");
         }

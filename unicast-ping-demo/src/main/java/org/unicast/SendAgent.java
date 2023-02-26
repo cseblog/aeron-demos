@@ -2,6 +2,7 @@ package org.unicast;
 
 import io.aeron.Publication;
 import org.agrona.concurrent.Agent;
+import org.agrona.concurrent.ShutdownSignalBarrier;
 import org.agrona.concurrent.UnsafeBuffer;
 
 import java.nio.ByteBuffer;
@@ -12,11 +13,13 @@ public class SendAgent implements Agent
     private final int sendCount;
     private final UnsafeBuffer unsafeBuffer;
     private int currentCountItem = 1;
+    private ShutdownSignalBarrier barrier;
 
-    public SendAgent(final Publication publication, int sendCount)
+    public SendAgent(final Publication publication, int sendCount, ShutdownSignalBarrier barrier)
     {
         this.publication = publication;
         this.sendCount = sendCount;
+        this.barrier = barrier;
         this.unsafeBuffer = new UnsafeBuffer(ByteBuffer.allocate(64));
         unsafeBuffer.putInt(0, currentCountItem);
     }
@@ -25,7 +28,7 @@ public class SendAgent implements Agent
     public int doWork() throws InterruptedException {
         if (currentCountItem > sendCount)
         {
-            System.out.println("Sent total: " + currentCountItem + " to Pong service");
+            barrier.signal();
             return 0;
         }
 
