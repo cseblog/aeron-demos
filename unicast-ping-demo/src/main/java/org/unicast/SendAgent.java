@@ -25,6 +25,7 @@ public class SendAgent implements Agent
     public int doWork() throws InterruptedException {
         if (currentCountItem > sendCount)
         {
+            System.out.println("Sent total: " + currentCountItem + " to Pong service");
             return 0;
         }
 
@@ -34,7 +35,6 @@ public class SendAgent implements Agent
             {
                 currentCountItem += 1;
                 unsafeBuffer.putInt(0, currentCountItem);
-                System.out.println("Sending..." + currentCountItem);
             }
         }
         return 0;
