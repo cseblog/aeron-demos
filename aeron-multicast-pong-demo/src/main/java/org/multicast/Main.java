@@ -9,10 +9,10 @@ import org.agrona.concurrent.ShutdownSignalBarrier;
 
 public class Main {
     public static void main(String[] args) {
-        String n1 = "192.168.64.6";
-        String n2 = "192.168.64.5";
-        String n3 = "192.168.64.4";
-        final String channel = String.format("aeron:udp?endpoint=239.255.255.1:4300|interface=%s|ttl=16", n1);
+        final String ip = System.getProperty("aeron.endpoint.ip", "localhost");
+        final String port = System.getProperty("aeron.endpoint.port", "4300");
+
+        final String channel = String.format("aeron:udp?endpoint=239.255.255.1:%s|interface=%s|ttl=16", port, ip);
         final int stream = 10;
         final int sendCount = 1_000_000;
 
@@ -27,17 +27,18 @@ public class Main {
         final ReceiveAgent receiveAgent = new ReceiveAgent(subscription, barrier, sendCount);
 
         //construct agent runners
-        final AgentRunner receiveAgentRunner = new AgentRunner(idleStrategyReceive,
-                Throwable::printStackTrace, null, receiveAgent);
+        final AgentRunner receiveAgentRunner = new AgentRunner(idleStrategyReceive, Throwable::printStackTrace, null, receiveAgent);
 
-        System.out.println("Starting Receive...");
+        System.out.println("Starting Receive... channel: " + channel);
 
         //start the runners
+        long st = System.currentTimeMillis();
         AgentRunner.startOnThread(receiveAgentRunner);
 
         //wait for the final item to be received before closing
         barrier.await();
-
+        long processTime = System.currentTimeMillis() - st;
+        System.out.println("Process time: " + processTime);
         //close the resources
         receiveAgentRunner.close();
         aeron.close();

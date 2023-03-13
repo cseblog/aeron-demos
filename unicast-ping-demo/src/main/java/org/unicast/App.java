@@ -17,7 +17,7 @@ public class App {
         final String channel = String.format("aeron:udp?endpoint=%s:%s", ip, port);
         final int streamId = 10;
         System.out.println("Aeron on chanel: " + channel + " streamId: " + streamId);
-        final int sendCount = 1_000_000;
+        final int sendCount = 1_000_100;
 
         final IdleStrategy idleStrategySend = new BusySpinIdleStrategy();
         final ShutdownSignalBarrier barrier = new ShutdownSignalBarrier();
