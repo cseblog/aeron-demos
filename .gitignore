@@ -8,3 +8,9 @@ target/
 .idea/**
 */.idea/**
 .idea/*
+
+aeron-archive/
+client-aeron-archive/
+client-aeron/
+client-logs/
+logs/
