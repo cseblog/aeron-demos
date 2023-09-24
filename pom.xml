@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.example</groupId>
+    <artifactId>aeron-demo</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+    </properties>
+
+    <modules>
+        <module>aeron-agent-ipc-ping-pong-demo</module>
+        <module>aeron-external-ipc-pong-demo</module>
+        <module>aeron-external-ipc-ping-demo</module>
+        <module>aeron-internal-ipc-2p1c-demo</module>
+
+        <module>aeron-simple-md-demo</module>
+
+        <module>aeron-archival-md</module>
+        <module>aeron-archival-pong-demo</module>
+
+        <module>aeron-cluster-messaging</module>
+        <module>aeron-cluster-demo</module>
+        <module>aeron-cluster-producer-client</module>
+        <module>aeron-cluster-consumer-client</module>
+
+        <module>aeron-multicast-ping-demo</module>
+        <module>aeron-multicast-pong-demo</module>
+        <module>unicast-ping-demo</module>
+        <module>unicast-pong-demo</module>
+        <module>aeron-artio-demo</module>
+        <module>artio-client-server</module>
+    </modules>
+
+</project>

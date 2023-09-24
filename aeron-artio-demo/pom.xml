@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.example</groupId>
+        <artifactId>aeron-demo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>aeron-artio-demo</artifactId>
+
+    <properties>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/io.aeron/aeron-all -->
+        <dependency>
+            <groupId>io.aeron</groupId>
+            <artifactId>aeron-all</artifactId>
+            <version>1.42.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.aeron/aeron-archive -->
+        <dependency>
+            <groupId>io.aeron</groupId>
+            <artifactId>aeron-archive</artifactId>
+            <version>1.42.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>uk.co.real-logic</groupId>
+            <artifactId>sbe-all</artifactId>
+            <version>1.29.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/uk.co.real-logic/artio-samples -->
+        <dependency>
+            <groupId>uk.co.real-logic</groupId>
+            <artifactId>artio-samples</artifactId>
+            <version>0.142</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>uk.co.real-logic</groupId>
+            <artifactId>Agrona</artifactId>
+            <version>0.4.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>uk.co.real-logic</groupId>
+            <artifactId>artio-core</artifactId>
+            <version>0.142</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/uk.co.real-logic/artio-binary-entrypoint-codecs -->
+        <dependency>
+            <groupId>uk.co.real-logic</groupId>
+            <artifactId>artio-binary-entrypoint-codecs</artifactId>
+            <version>0.142</version>
+        </dependency>
+
+        <dependency>
+            <groupId>uk.co.real-logic</groupId>
+            <artifactId>artio-session-codecs</artifactId>
+            <version>0.142</version>
+        </dependency>
+
+    </dependencies>
+</project>
