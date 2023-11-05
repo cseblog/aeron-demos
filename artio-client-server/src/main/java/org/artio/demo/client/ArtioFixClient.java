@@ -25,8 +25,9 @@ public class ArtioFixClient
     private static final String AERON_DIR_NAME = "client-aeron";
     private static final String ARCHIVE_DIR_NAME = "client-aeron-archive";
     public static final String REPLICATION_CHANNEL = "aeron:udp?endpoint=localhost:7060";
-    public static final String CONTROL_REQUEST_CHANNEL = "aeron:ipc";
     public static final String CONTROL_CHANNEL = "aeron:udp?endpoint=localhost:7070";
+
+    public static final String CONTROL_REQUEST_CHANNEL = "aeron:ipc";
     public static final String CONTROL_RESPONSE_CHANNEL = "aeron:ipc";
     public static final String RECORDING_EVENTS_CHANNEL = "aeron:udp?control-mode=dynamic|control=localhost:7030";
 
@@ -42,7 +43,7 @@ public class ArtioFixClient
         final EngineConfiguration configuration = new EngineConfiguration()
             .libraryAeronChannel(aeronChannel)
             .monitoringFile(optimalTmpDirName() + File.separator + "fix-client" + File.separator + "engineCounters")
-            .logFileDir("client-logs");
+            .logFileDir("client-logs"); //default "logs" folder
 
         configuration.aeronArchiveContext()
             .aeronDirectoryName(AERON_DIR_NAME)
@@ -69,7 +70,10 @@ public class ArtioFixClient
             .replicationChannel(REPLICATION_CHANNEL)
             .recordingEventsChannel(RECORDING_EVENTS_CHANNEL);
 
-        try (ArchivingMediaDriver driver = ArchivingMediaDriver.launch(context, archiveContext))
+        ArchivingMediaDriver driver = ArchivingMediaDriver.launch(context, archiveContext);
+
+
+        try
         {
             try (FixEngine ignore = FixEngine.launch(configuration))
             {
@@ -123,9 +127,9 @@ public class ArtioFixClient
                         System.out.println(TEST_REQ_ID_FINDER.testReqId());
                         Thread.sleep(1000);
                     }
-
                     session.startLogout();
                     session.requestDisconnect();
+
                     while (session.state() != DISCONNECTED)
                     {
                         idleStrategy.idle(library.poll(1));
@@ -133,6 +137,8 @@ public class ArtioFixClient
                     System.out.println("Disconnected");
                 }
             }
+        } catch (Exception e) {
+            //
         }
 
         System.exit(0);

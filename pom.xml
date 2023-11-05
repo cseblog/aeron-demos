@@ -21,10 +21,7 @@
         <module>aeron-internal-ipc-2p1c-demo</module>
 
         <module>aeron-simple-md-demo</module>
-
-        <module>aeron-archival-md</module>
-        <module>aeron-archival-pong-demo</module>
-
+        <module>aeron-archival-demo</module>
         <module>aeron-cluster-messaging</module>
         <module>aeron-cluster-demo</module>
         <module>aeron-cluster-producer-client</module>
@@ -34,7 +31,6 @@
         <module>aeron-multicast-pong-demo</module>
         <module>unicast-ping-demo</module>
         <module>unicast-pong-demo</module>
-        <module>aeron-artio-demo</module>
         <module>artio-client-server</module>
     </modules>
 

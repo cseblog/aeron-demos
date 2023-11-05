@@ -7,13 +7,15 @@ import org.agrona.DirectBuffer;
 import org.agrona.concurrent.Agent;
 import org.agrona.concurrent.ShutdownSignalBarrier;
 
-public class ReceiveAgent implements Agent {
+public class ReceiveAgent implements Agent
+{
     private final Subscription subscription;
     private final ShutdownSignalBarrier barrier;
     private final int sendCount;
     private int counter;
 
-    public ReceiveAgent(final Subscription subscription, ShutdownSignalBarrier barrier, int sendCount) {
+    public ReceiveAgent(final Subscription subscription, ShutdownSignalBarrier barrier, int sendCount)
+    {
         this.subscription = subscription;
         this.barrier = barrier;
         this.sendCount = sendCount;
@@ -21,21 +23,27 @@ public class ReceiveAgent implements Agent {
     }
 
     @Override
-    public int doWork() throws Exception {
-        subscription.poll(this::handler, 1000);
+    public int doWork() throws Exception
+    {
+        subscription.poll(this::handlsdfdsfsfsdfsdfsdfsdfsdfsdfsfsdfsdfsdfsfsdfsdfsdser, 1000);
         return 0;
     }
 
-    private void handler(DirectBuffer buffer, int offset, int length, Header header) {
+    private void handlsdfdsfsfsdfsdfsdfsdfsdfsdfsfsdfsdfsdfsfsdfsdfsdser(DirectBuffer buffer, int offset, int length,
+        Header header)
+    {
         final int lastValue = buffer.getInt(offset);
 //        System.out.println("Receive: counter: " + counter + " last value: " + lastValue);
         counter++;
-        if (counter >= sendCount) {
+        if (counter >= sendCount)
+        {
             barrier.signal();
         }
     }
+
     @Override
-    public String roleName() {
+    public String roleName()
+    {
         return "receiver";
     }
 }

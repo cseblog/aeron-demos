@@ -1,6 +1,7 @@
 package org.artio.demo.server;
 
 
+import edu.emory.mathcs.backport.java.util.Arrays;
 import io.aeron.archive.Archive;
 import io.aeron.archive.ArchiveThreadingMode;
 import io.aeron.archive.ArchivingMediaDriver;
@@ -45,15 +46,16 @@ public final class ArtioFixServer
     public static void main(final String[] args)
     {
         final MessageValidationStrategy validationStrategy = MessageValidationStrategy.targetCompId(ACCEPTOR_COMP_ID)
-            .and(MessageValidationStrategy.senderCompId(Collections.singletonList(INITIATOR_COMP_ID)));
+            .and(MessageValidationStrategy.senderCompId(Arrays.asList(new String[]{INITIATOR_COMP_ID, "QuickFixInitiator"})));
 
         final AuthenticationStrategy authenticationStrategy = AuthenticationStrategy.of(validationStrategy);
 
         // Static configuration lasts the duration of a FIX-Gateway instance
         final String aeronChannel = "aeron:udp?endpoint=localhost:10000";
         final EngineConfiguration configuration = new EngineConfiguration()
-            .bindTo("localhost", 9999)
+            .bindTo("localhost", 9876)
             .libraryAeronChannel(aeronChannel);
+
         configuration.authenticationStrategy(authenticationStrategy);
         configuration.aeronArchiveContext()
             .controlResponseChannel(CONTROL_RESPONSE_CHANNEL)
@@ -72,13 +74,16 @@ public final class ArtioFixServer
             .replicationChannel(REPLICATION_CHANNEL)
             .deleteArchiveOnStart(true);
 
-        try (ArchivingMediaDriver driver = ArchivingMediaDriver.launch(context, archiveContext);
-            FixEngine gateway = FixEngine.launch(configuration))
+        // Starting MD
+        ArchivingMediaDriver driver = ArchivingMediaDriver.launch(context, archiveContext);
+
+        // Starting Engine
+        FixEngine gateway = FixEngine.launch(configuration);
+
+        // Starting Library
+        try
         {
             final LibraryConfiguration libraryConfiguration = new LibraryConfiguration();
-
-            // You register the new session handler - which is your application hook
-            // that receives messages for new sessions
             libraryConfiguration
                 .sessionAcquireHandler((session, acquiredInfo) -> onConnect(session))
                 .sessionExistsHandler(new AcquiringSessionExistsHandler())
@@ -101,6 +106,8 @@ public final class ArtioFixServer
                     }
                 }
             }
+        } catch (Exception e) {
+            //Log exception
         }
 
         System.exit(0);
@@ -117,7 +124,6 @@ public final class ArtioFixServer
 
         // Simple server just handles a single connection on a single thread
         // You choose how to manage threads for your application.
-
         return new DemoSessionHandler(session);
     }
 }
